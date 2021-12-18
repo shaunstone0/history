@@ -1,14 +1,15 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { SwaggerModule } from '@nestjs/swagger';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
-import { createSwaggerDocument } from './config/utils/swagger-utils';
+
+import { AppModule } from './app.module';
 import {
     swaggerConfig,
     swaggerUrl,
 } from './config/swagger-config/swagger-constants';
-import { SwaggerModule } from '@nestjs/swagger';
+import { createSwaggerDocument } from './config/utils/swagger-utils';
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
     const app = await NestFactory.create(AppModule, { bufferLogs: true });
 
     app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
