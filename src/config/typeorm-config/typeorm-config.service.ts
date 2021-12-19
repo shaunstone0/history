@@ -4,6 +4,12 @@ import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 
 import { TypeormTypeNameEnum } from '../enums/config.enums';
 
+/**
+ * used to configure Typeorm
+ * @class TypeormConfigService
+ * @classdesc used to create the connection to Typeorm
+ */
+
 @Injectable()
 export class TypeormConfigService implements TypeOrmOptionsFactory {
     public type: TypeormTypeNameEnum.MYSQL;
