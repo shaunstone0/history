@@ -1,5 +1,5 @@
-import * as dotenv from 'dotenv';
 import { DocumentBuilder } from '@nestjs/swagger';
+import * as dotenv from 'dotenv';
 
 // Initialize Dotenv package that comes directly from NestjsConfigModule.
 dotenv.config();

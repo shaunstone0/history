@@ -4,11 +4,12 @@ import {
     WinstonModuleOptionsFactory,
 } from 'nest-winston';
 import * as winston from 'winston';
+import { format } from 'winston';
 import {
     ConsoleTransportInstance,
     FileTransportInstance,
 } from 'winston/lib/winston/transports';
-import { format } from 'winston';
+
 import { DateUtilsService } from '../../shared/utils/date-utils/date-utils.service';
 
 /**
