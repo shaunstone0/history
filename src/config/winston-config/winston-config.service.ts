@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService as NestConfigService } from '@nestjs/config';
 import {
     WinstonModuleOptions,
     WinstonModuleOptionsFactory,
@@ -24,9 +25,14 @@ export class WinstonConfigService implements WinstonModuleOptionsFactory {
     // TODO: add Live array when moving to production
     public liveArray = [];
 
-    public debugOutput = process.env.DEBUG_OUTPUT;
+    public debugOutput: string;
 
-    constructor(private dateUtilsService: DateUtilsService) {}
+    constructor(
+        private dateUtilsService: DateUtilsService,
+        nestConfigService: NestConfigService,
+    ) {
+        this.debugOutput = nestConfigService.get<string>('DEBUG_OUTPUT');
+    }
 
     public createWinstonModuleOptions(): WinstonModuleOptions {
         const dateString = this.dateUtilsService.getLoggerDateString();

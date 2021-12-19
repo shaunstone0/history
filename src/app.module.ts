@@ -22,6 +22,7 @@ import { DateUtilsModule } from './shared/utils/date-utils/date-utils.module';
         }),
         WinstonModule.forRootAsync({
             useClass: WinstonConfigService,
+            inject: [NestConfigService],
             imports: [DateUtilsModule],
         }),
     ],
