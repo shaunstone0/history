@@ -11,6 +11,7 @@ import { AppService } from './app.service';
 import { TypeormConfigService } from './config/typeorm-config/typeorm-config.service';
 import { WinstonConfigService } from './config/winston-config/winston-config.service';
 import { DateUtilsModule } from './shared/utils/date-utils/date-utils.module';
+import { UserModule } from './users/user.module';
 
 @Module({
     imports: [
@@ -24,6 +25,7 @@ import { DateUtilsModule } from './shared/utils/date-utils/date-utils.module';
             inject: [NestConfigService],
             imports: [DateUtilsModule],
         }),
+        UserModule,
     ],
     controllers: [AppController],
     providers: [AppService, NestConfigModule],

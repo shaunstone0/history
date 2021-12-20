@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule } from '@nestjs/swagger';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
@@ -18,6 +19,8 @@ async function bootstrap(): Promise<void> {
     const document = createSwaggerDocument(app, swaggerConfig);
 
     SwaggerModule.setup(swaggerUrl, app, document);
+
+    app.useGlobalPipes(new ValidationPipe());
 
     await app.listen(3000);
 }
