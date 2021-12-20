@@ -41,7 +41,9 @@ export class WinstonConfigService implements WinstonModuleOptionsFactory {
 
         const loggerFormat = winstonFormat.printf(
             ({ level, message, timestamp, context }) => {
-                return `${level} ${timestamp} [${context}] ${message}`;
+                const contextString = `\x1b[1m\x1b[34m[${context}]\x1b[0m`;
+
+                return `[ ${level} ] ${timestamp} - ${contextString} : ${message}`;
             },
         );
 

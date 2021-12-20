@@ -1,11 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Logger as NestLogger, Module } from '@nestjs/common';
 import {
     ConfigModule as NestConfigModule,
     ConfigService as NestConfigService,
 } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
-import { Connection } from 'typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -17,8 +16,9 @@ import { DateUtilsModule } from './shared/utils/date-utils/date-utils.module';
     imports: [
         NestConfigModule.forRoot({ isGlobal: true }),
         TypeOrmModule.forRootAsync({
+            name: 'default',
             useClass: TypeormConfigService,
-            inject: [NestConfigService],
+            inject: [NestConfigService, NestLogger],
         }),
         WinstonModule.forRootAsync({
             useClass: WinstonConfigService,
@@ -30,5 +30,5 @@ import { DateUtilsModule } from './shared/utils/date-utils/date-utils.module';
     providers: [AppService, NestConfigModule],
 })
 export class AppModule {
-    constructor(private connection: Connection) {}
+    constructor() {}
 }

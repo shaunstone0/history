@@ -1,6 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger as NestLogger } from '@nestjs/common';
 import { ConfigService as NestConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+import { existsSync, mkdirSync } from 'fs-extra';
+import { join } from 'path';
+import { LoggerOptions } from 'typeorm';
 
 import { TypeormTypeNameEnum } from '../enums/config.enums';
 
@@ -20,16 +23,27 @@ export class TypeormConfigService implements TypeOrmOptionsFactory {
     public database: string;
     public entities: string;
     public migrationsDirectory: string;
+    public logging: LoggerOptions;
 
     public TypeormTypeNameEnum = TypeormTypeNameEnum;
+
+    public logger = new NestLogger(TypeormConfigService.name);
 
     constructor(private nestConfigService: NestConfigService) {}
 
     // This is the function that is called when this class is
     // instantiated. This creates the Typeorm connection.
 
-    public createTypeOrmOptions(): TypeOrmModuleOptions {
-        this.getEnvironmentVariables();
+    public async createTypeOrmOptions(): Promise<TypeOrmModuleOptions> {
+        await this.getEnvironmentVariables();
+
+        // Create Migrations Directory if It does not Exist
+        if (!existsSync('src/migration')) {
+            mkdirSync('src/migration');
+        }
+        console.log(this.migrationsDirectory);
+
+        this.logger.log('Creating Database Connection Options....');
 
         return {
             type: this.type,
@@ -39,9 +53,11 @@ export class TypeormConfigService implements TypeOrmOptionsFactory {
             password: this.password,
             database: this.database,
             entities: [this.entities],
+            migrations: ['./src/migration'],
             cli: {
-                migrationsDir: this.migrationsDirectory,
+                migrationsDir: '/src/migration',
             },
+            synchronize: false,
         };
     }
     // Method to get all the environment variables. The Syntax used is from the next documentation.
