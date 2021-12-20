@@ -16,7 +16,6 @@ import { DateUtilsModule } from './shared/utils/date-utils/date-utils.module';
     imports: [
         NestConfigModule.forRoot({ isGlobal: true }),
         TypeOrmModule.forRootAsync({
-            name: 'default',
             useClass: TypeormConfigService,
             inject: [NestConfigService, NestLogger],
         }),
@@ -29,6 +28,4 @@ import { DateUtilsModule } from './shared/utils/date-utils/date-utils.module';
     controllers: [AppController],
     providers: [AppService, NestConfigModule],
 })
-export class AppModule {
-    constructor() {}
-}
+export class AppModule {}

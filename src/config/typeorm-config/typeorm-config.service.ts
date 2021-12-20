@@ -2,7 +2,6 @@ import { Injectable, Logger as NestLogger } from '@nestjs/common';
 import { ConfigService as NestConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { existsSync, mkdirSync } from 'fs-extra';
-import { join } from 'path';
 import { LoggerOptions } from 'typeorm';
 
 import { TypeormTypeNameEnum } from '../enums/config.enums';
@@ -41,7 +40,6 @@ export class TypeormConfigService implements TypeOrmOptionsFactory {
         if (!existsSync('src/migration')) {
             mkdirSync('src/migration');
         }
-        console.log(this.migrationsDirectory);
 
         this.logger.log('Creating Database Connection Options....');
 
@@ -53,7 +51,7 @@ export class TypeormConfigService implements TypeOrmOptionsFactory {
             password: this.password,
             database: this.database,
             entities: [this.entities],
-            migrations: ['./src/migration'],
+            migrations: ['src/dist//migration/*{.ts, .js}'],
             cli: {
                 migrationsDir: '/src/migration',
             },
