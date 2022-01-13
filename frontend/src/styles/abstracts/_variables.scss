@@ -1,0 +1,109 @@
+@use "sass:math";
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Typeography ////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Fonts
+$open-sans: 'Open Sans', sans-serif !default;
+$noto-serif: 'NotoSerif', sans-serif !default;
+
+$font-family--base: $open-sans !default;
+$font-family--secondary: $noto-serif !default;
+
+$font-weight--light: 300 !default;
+$font-weight--normal: 400 !default;
+$font-weight--bold: 700 !default;
+
+$font-size--large: 1.6rem !default; // == 26px
+$font-size--medium: 1.25rem !default; // ==> 20px
+$font-size--base: .9rem !default; // ==> 14px
+$font-size--small: .75rem !default; // ==> 12px
+$font-size--xsmall: .6rem !default; // => 10px
+$font-size--zero: 0rem !default;
+
+
+$line-height--large: 1.6 !default;
+$line-height--base: 1.35 !default;
+$light-height--small: 1.1 !default;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Sizing ////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$spacing-element--base: 1.4rem !default;
+$spacing-element--large: $spacing-element--base * 2 !default; // 1,4 --> 2,8
+$spacing-element--xlarge: $spacing-element--base * 2.5 !default; // 1,4 --> 3,5
+$spacing-element--xxlarge: $spacing-element--base * 3.5 !default; // 1,4 --> 4,9
+$spacing-element--xsmall: math.div($spacing-element--base, 4) !default; // 1,4 --> 0,35
+$spacing-element--small: math.div($spacing-element--base, 2) !default; // 1,4 --> 0,7
+$spacing-element--grid: .95rem !default; // ==> 15px
+$spacing-element--auto: auto !default;
+$space-element--zero: 0 !default;
+
+$sizing-element--auto: auto !default;
+$sizing-element--10p: 10% !default;
+$sizing-element--15p: 15% !default;
+$sizing-element--20p: 20% !default;
+$sizing-element--25p: 25% !default;
+$sizing-element--33p: 33% !default;
+$sizing-element--40p: 40% !default;
+$sizing-element--50p: 50% !default;
+$sizing-element--67p: 67% !default;
+$sizing-element--70p: 70% !default;
+$sizing-element--80p: 80% !default;
+$sizing-element--90p: 90% !default;
+$sizing-element--100p: 100% !default;
+$sizing-element--zero: 0 !default;
+$sizing-element--100vw: 100vw !default;
+$sizing-element--100vh: 100vh !default;
+
+$icon-size--small: 14px !default;
+$icon-size--base: 18px !default;
+$icon-size--medium: 25px !default;
+$icon-size--large: 30px !default;
+$icon-size--xlarge: 40px !default;
+$icon-size--xxlarge: 60px !default;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Colors ////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grey-highlight: #ABACAD;
+$gold-highlight: #CBAB62;
+$dark-highlight: #2C2D30;
+$blue: #1F94E1 !default;
+
+
+
+
+
+
+// TODO: Build something similar
+//$goldengate__z-layers: (
+//  zero: 0,
+//  base: 1,
+//  app: (
+//    cdk-overlay-container--content: 10,
+//    page-navigation: 11,
+//    page-toolbar: 12,
+//    search-bar-sticky: 13,
+//    loading-indicator-fs: 14,
+//    cdk-overlay-container--gg-modal: 15,
+//    ngb-tooltip: 16,
+//    back-to-booking-bar: 17,
+//  ),
+//  max: 99999,
+//);
