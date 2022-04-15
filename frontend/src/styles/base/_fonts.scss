@@ -1,0 +1,8 @@
+@use '../abstracts/mixins' as *;
+
+@include font-face("Georama", "georama" ,"Georama-Light", 300 );
+@include font-face("Georama", "georama" ,"Georama-Regular", 400 );
+@include font-face("Georama", "georama" ,"Georama-Medium", 500 );
+@include font-face("Georama", "georama" ,"Georama-Bold", 700 );
+
+$georama: "Georama", sans-sarif;

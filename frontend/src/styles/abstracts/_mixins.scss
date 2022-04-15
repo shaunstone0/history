@@ -1,0 +1,28 @@
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+// The ~ is required in the path due to Angular
+
+@mixin font-face($name, $file-name, $file, $font-weight ) {
+  @font-face {
+    font-family: "#{$name}";
+    font-style: normal;
+    font-weight: $font-weight;
+    src: url("~src/assets/fonts/#{$file-name}/#{$file}.ttf");
+  }
+}

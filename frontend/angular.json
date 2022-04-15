@@ -28,10 +28,11 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/fonts"
             ],
             "styles": [
-              "src/styles/styles.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -58,6 +59,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "stylePreprocessorOptions": {
+                "includePaths": ["src/styles","src/styles/abstracts", "src/styles/base"]
+              },
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
